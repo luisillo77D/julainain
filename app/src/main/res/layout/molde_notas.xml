@@ -37,14 +37,15 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/btnEditar"
                 android:layout_width="40pt"
                 android:layout_height="40pt"
                 app:srcCompat="@mipmap/ic_edit"/>
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/btnEliminar"
                 android:layout_width="40pt"
                 android:layout_height="40pt"
+                android:onClick="eliminarNota"
                 app:srcCompat="@mipmap/ic_delete"/>
         </LinearLayout>
 

@@ -39,9 +39,39 @@ class DBManager {
 
     fun insert(values:ContentValues):Long{
         val ID =sqlDB!!.insert(dbTabla,"",values)
-
         return ID
     }
+    //obtenemos todas las notas y las regresamos como un arraylist de notas, ejecutando un execsql
+    fun selectNotas(columnas:Array<String>, selection:String?, selectionArgs:Array<String>?, groupBy:String?):ArrayList<Notas>{
+        val cursor = sqlDB!!.query(dbTabla,columnas,selection,selectionArgs,groupBy,null,null)
+        val listaNotas = ArrayList<Notas>()
+        while (cursor.moveToNext()){
+            listaNotas.add(Notas(cursor.getInt(0),cursor.getString(1),cursor.getString(2)))
+        }
+        return listaNotas
+    }
+
+    //funcion para actualizar una nota
+    fun update(values:ContentValues, selection:String, selectionArgs:Array<String>):Int{
+        val count = sqlDB!!.update(dbTabla,values,selection,selectionArgs)
+        return count
+    }
+
+    //funcion para eliminar una nota con el id
+    fun delete(selection: String, selectionArgs: Array<String>):Int{
+        val count = sqlDB!!.delete(dbTabla,selection,selectionArgs)
+        return count
+    }
+
+    //funcion para regresar una nota buscando por id
+    fun selectNota(columnas:Array<String>, selection:String, selectionArgs:Array<String>):Notas{
+        val cursor = sqlDB!!.query(dbTabla,columnas,selection,selectionArgs,null,null,null)
+        cursor.moveToFirst()
+        return Notas(cursor.getInt(0),cursor.getString(1),cursor.getString(2))
+    }
+
+
+
 
 
 }
