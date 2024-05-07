@@ -1,7 +1,6 @@
 package com.example.sqllitee
 
 import android.app.SearchManager
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
